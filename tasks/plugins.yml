@@ -1,0 +1,39 @@
+---
+
+# ----------->
+
+- name: fetch key proxy - Ansible bug (< v2.7)
+  become: yes
+  apt_key:
+    url: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xB3B4C3CECC10C662"
+    state: present
+
+- name: ensure 'keepass' plugin repo presence
+  become: yes
+  apt_repository:
+    repo: "deb http://ppa.launchpad.net/dlech/keepass2-plugins/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main"
+    filename: keepass-plugins
+    state: present
+
+- name: update repositories
+  become: yes
+  apt:
+    update_cache: yes
+
+# ==========
+
+#- name: ensure 'keepass' plugin repo presence
+#  become: yes
+#  apt_repository:
+#    repo: 'ppa:dlech/keepass2-plugins'
+#    filename: keepass-plugins
+#    state: present
+
+# <----------
+
+- name: establish plugins
+  become: yes
+  package:
+    name: "keepass2-plugin-{{ item }}"
+    state: present
+  with_items: "{{ plugins }}"

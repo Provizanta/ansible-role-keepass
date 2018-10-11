@@ -1,0 +1,18 @@
+---
+# tasks file for keepass
+
+- name: ensure 'keepass2' repo presence
+  become: yes
+  apt_repository:
+    repo: 'ppa:jtaylor/keepass'
+    filename: keepass
+    state: present
+
+- name: establish keepass2
+  become: yes
+  package: 
+    name: keepass2
+    state: present
+ 
+- import_tasks: plugins.yml
+  when: plugins is defined
