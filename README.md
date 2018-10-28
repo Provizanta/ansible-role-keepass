@@ -29,11 +29,10 @@ Only plugins can be additionally specified in a variable passed to 'keepass' rol
 
     - hosts: localhost
       roles:
-        - keepass
+        - role: keepass
           vars:
             plugins:
               - keeagent
-              - rpc
               - status-notifier
 
 License
