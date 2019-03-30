@@ -1,0 +1,19 @@
+---
+
+- name: ensure 'keepass2' repo presence
+  become: yes
+  apt_repository:
+    repo: 'ppa:jtaylor/keepass'
+    filename: keepass
+    state: present
+
+- name: ensure 'keepass' plugin repo presence
+  when:
+    - plugins is defined
+    - plugins | length > 0
+  become: yes
+  apt_repository:
+    repo: 'ppa:dlech/keepass2-plugins'
+    filename: keepass-plugins
+    state: present
+

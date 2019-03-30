@@ -1,5 +1,3 @@
 ---
-# defaults file for keepass
 
-plugins:
-  - keeagent
+plugins: []

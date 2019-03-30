@@ -13,6 +13,6 @@ galaxy_info:
       versions:
       - all
 
-  galaxy_tags: [key management]
+  galaxy_tags: [password management]
 
 dependencies: []

@@ -1,18 +1,31 @@
 ---
-# tasks file for keepass
 
-- name: ensure 'keepass2' repo presence
-  become: yes
-  apt_repository:
-    repo: 'ppa:jtaylor/keepass'
-    filename: keepass
-    state: present
+- name: load platform vars
+  include_tasks: "{{ item }}"
+  loop: "{{ query('first_found', params, errors='ignore') }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        - "{{ ansible_system }}.yml"
+      paths:
+        - '{{ role_path }}/vars/'
 
 - name: establish keepass2
   become: yes
   package: 
     name: keepass2
     state: present
+  tags: install
  
-- import_tasks: plugins.yml
-  when: plugins is defined
+- name: establish plugins
+  when: 
+    - plugins is defined
+    - plugins | length > 0
+  become: yes
+  package:
+    name: "{{ plugins | map('regex_replace', '(.*)', 'keepass2-plugin-\\1') | list }}"
+    state: present
+  tags: install
