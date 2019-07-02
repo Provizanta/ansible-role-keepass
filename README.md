@@ -25,7 +25,6 @@ None
 
 Example Playbook
 ----------------
-Only plugins can be additionally specified in a variable passed to 'keepass' role.
 
     - hosts: localhost
       roles:
@@ -43,4 +42,4 @@ MIT
 Author Information
 ------------------
 
-Tibor Csoka
+Tibor Csóka

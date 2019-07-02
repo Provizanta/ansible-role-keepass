@@ -11,20 +11,20 @@
         - "{{ ansible_os_family }}.yml"
         - "{{ ansible_system }}.yml"
       paths:
-        - '{{ role_path }}/vars/'
+        - '{{ role_path }}/tasks/platform/pre-install/'
 
 - name: establish keepass2
-  become: yes
-  package: 
+  become: true
+  package:
     name: keepass2
     state: present
   tags: install
- 
+
 - name: establish plugins
-  when: 
+  when:
     - plugins is defined
     - plugins | length > 0
-  become: yes
+  become: true
   package:
     name: "{{ plugins | map('regex_replace', '(.*)', 'keepass2-plugin-\\1') | list }}"
     state: present
