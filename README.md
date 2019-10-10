@@ -13,12 +13,9 @@ None
 Role Variables
 --------------
 
-A list of plugins that should be installed.
+These variables are defined in [defaults/main.yml](./defaults/main.yml):
 
-    plugins:
-      - keeagent
-      - rpc
-      ...
+    keepass_plugins: []     # list of plugins to be installed
 
 Dependencies
 ------------
@@ -28,13 +25,13 @@ None
 Example Playbook
 ----------------
 
-    - hosts: localhost
+    - name: Converge
+      hosts: all
       roles:
         - role: keepass
           vars:
-            plugins:
-              - keeagent
-              - status-notifier
+            keepass_plugins:
+              - keepass2-plugin-tray-icon
 
 License
 -------

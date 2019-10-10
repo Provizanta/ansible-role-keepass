@@ -5,5 +5,5 @@
   roles:
     - role: keepass
       vars:
-        plugins:
-          - keeagent
+        keepass_plugins:
+          - keepass2-plugin-tray-icon

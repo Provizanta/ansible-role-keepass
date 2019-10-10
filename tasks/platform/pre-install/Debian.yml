@@ -11,8 +11,8 @@
 - name: establish keepass plugin repo
   when:
     - ansible_distribution == 'Ubuntu'
-    - plugins is defined
-    - plugins | length > 0
+    - keepass_plugins is defined
+    - keepass_plugins | length > 0
   become: true
   apt_repository:
     repo: 'ppa:dlech/keepass2-plugins'

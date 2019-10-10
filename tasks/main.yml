@@ -22,10 +22,10 @@
 
 - name: establish plugins
   when:
-    - plugins is defined
-    - plugins | length > 0
+    - keepass_plugins is defined
+    - keepass_plugins | length > 0
   become: true
   package:
-    name: "{{ plugins | map('regex_replace', '(.*)', 'keepass2-plugin-\\1') | list }}"
+    name: "{{ keepass_plugins }}"
     state: present
   tags: install
