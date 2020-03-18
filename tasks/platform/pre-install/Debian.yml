@@ -1,5 +1,11 @@
 ---
 
+- name: establish dependencies
+  become: true
+  package:
+    name: gpg-agent
+  tags: install
+
 - name: establish keepass repo
   when: ansible_distribution == 'Ubuntu'
   become: true
@@ -7,6 +13,7 @@
     repo: 'ppa:jtaylor/keepass'
     filename: keepass
     state: present
+  tags: install
 
 - name: establish keepass plugin repo
   when:
@@ -18,10 +25,10 @@
     repo: 'ppa:dlech/keepass2-plugins'
     filename: keepass-plugins
     state: present
+  tags: install
 
 - name: establish keepass repo
-  when:
-    - ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian'
   become: true
   apt_repository:
     repo: "{{ item }}"
@@ -29,3 +36,4 @@
   loop:
     - "deb http://ftp.debian.org/debian/ stable main contrib non-free"
     - "deb http://ftp.de.debian.org/debian {{ ansible_distribution_release }} main"
+  tags: install

@@ -1,5 +1,7 @@
 ---
 
+dist: bionic
+
 language: python
 python:
   - 3.6
@@ -9,11 +11,10 @@ env:
   global:
     - ROLE_NAME: keepass
   matrix:
-    - MOLECULE_DISTRO: ubuntu1604
     - MOLECULE_DISTRO: ubuntu1804
 
 install:
-  - pip install molecule docker
+  - pip install molecule docker ansible-lint flake8
 
 before_script:
   - cd ../

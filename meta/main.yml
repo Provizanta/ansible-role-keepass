@@ -16,7 +16,6 @@ galaxy_info:
       versions:
         - cosmic
         - bionic
-        - xenial
 
   galaxy_tags:
     - keepass
