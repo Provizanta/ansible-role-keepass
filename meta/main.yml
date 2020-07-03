@@ -14,7 +14,7 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - cosmic
+        - focal
         - bionic
 
   galaxy_tags:
