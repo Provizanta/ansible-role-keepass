@@ -1,7 +1,7 @@
 Ansible role: Keepass
 =========
 
-[![Build Status](https://travis-ci.com/Provizanta/ansible-role-keepass.svg?branch=master)](https://travis-ci.com/Provizanta/ansible-role-keepass)
+![Build & Deploy](https://github.com/Provizanta/ansible-role-keepass/workflows/molecule/badge.svg?branch=master)
 
 Keepass keychain for password and key management.
 

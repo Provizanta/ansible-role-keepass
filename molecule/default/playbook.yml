@@ -8,7 +8,7 @@
       apt:
         update_cache: true
   roles:
-    - role: keepass
+    - role: ansible-role-keepass
       vars:
         keepass_plugins:
           - keepass2-plugin-tray-icon
