@@ -2,6 +2,7 @@
 
 galaxy_info:
   role_name: keepass
+  namespace: provizanta
   author: Tibor Csóka
   description: |
     "Establish Keepass safe password storage along with the plugins."
