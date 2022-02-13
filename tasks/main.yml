@@ -1,5 +1,11 @@
 ---
 
+- name: asserts
+  loop: "{{ keepass_plugins }}"
+  assert:
+    that:
+      - item is regex('^keepass2-plugin.*')
+
 - name: load platform vars
   include_tasks: "{{ item }}"
   loop: "{{ query('first_found', params, errors='ignore') }}"

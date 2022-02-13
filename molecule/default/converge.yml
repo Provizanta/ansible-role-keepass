@@ -2,11 +2,6 @@
 
 - name: Converge
   hosts: all
-  pre_tasks:
-    - name: update package manager
-      when: "ansible_pkg_mgr == 'apt'"
-      apt:
-        update_cache: true
   roles:
     - role: ansible-role-keepass
       vars:
